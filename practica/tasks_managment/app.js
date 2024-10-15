@@ -1,12 +1,13 @@
-// seleccionar elementos del dom con getElementById
-const taskForm = document.getElementById("taskForm");
-const taskInput = document.getElementById("taskInput");
-const taskList = document.getElementById("taskList");
+// leer los elementos del dom ( document object modelo == hmtl)
+const taskForm = document.getElementById("taskForm"); // form
+const taskInput = document.getElementById("taskInput"); // input
+const taskList = document.getElementById("taskList"); // lista 
 
-// declarar un array vacio donde se van a almacenar las tareas
-let tasks = [];
+let tasks = []; // inicializar la lista como un array vacio 
 
-// función para agregar una tarea
+// funcion para agregar tareas a la lista
+// task = { text: string, completed: boolean }
+// llama a la funcion renderTasks();
 function addTask(task) {
   tasks.push({
     text: task,
@@ -15,25 +16,21 @@ function addTask(task) {
   renderTasks();
 }
 
-// función para eliminar una tarea
 function deleteTask(index) {
-  tasks.splice(index, 1); // Elimina la tarea en la posición 'index'
+  tasks.splice(index, 1); 
   renderTasks();
 }
 
-// función para marcar una tarea como completada
 function toggleTaskCompletion(index) {
-  tasks[index].completed = !tasks[index].completed; // Cambia el estado completado
+  tasks[index].completed = !tasks[index].completed;
   renderTasks();
 }
 
-// función para renderizar las tareas en el dom
+// 
 function renderTasks() {
-  taskList.innerHTML = ""; // Limpiamos la lista antes de renderizar
+  taskList.innerHTML = ""; // 
 
-  // Usamos un bucle para iterar sobre las tareas
   tasks.forEach((task, index) => {
-    // Creamos un elemento <li> por cada tarea
     const li = document.createElement("li");
     li.className = task.completed ? "completed" : "";
 
@@ -51,13 +48,12 @@ function renderTasks() {
   });
 }
 
-// escuchar evento submit del formulario para agregar una tarea
 taskForm.addEventListener("submit", (event) => {
   event.preventDefault(); // Evita que la página se recargue
-  const newTask = taskInput.value.trim(); // Obtenemos el valor del input
+  const newTask = taskInput.value.trim(); 
 
   if (newTask !== "") {
-    addTask(newTask); // Agregar la tarea
-    taskInput.value = ""; // Limpiar el campo de texto
+    addTask(newTask); 
+    taskInput.value = ""; 
   }
 });
