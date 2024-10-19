@@ -52,6 +52,7 @@ class TaskManager {
 
       const deleteBtn = document.createElement("button");
       deleteBtn.textContent = "Delete";
+      deleteBtn.classList = "btn-delete";
       deleteBtn.onclick = () => this.deleteTask(index);
 
       const toggleBtn = document.createElement("button");
